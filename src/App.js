@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 function App() {
   let post = 'Head Title A'
-  let [title, setTitle] = useState(['Content Title A', 'Content Title B', 'Content Title C'])
+  let [title, setTitle] = useState(['C Content Title', 'A Content Title', 'B Content Title'])
   let [like, setLike] = useState(0)
 
   return (
@@ -13,6 +13,15 @@ function App() {
         <h4>Blog</h4>
       </div>
       <div className="list">
+        <button
+          onClick={() => {
+            let sortCopy = [...title]
+            sortCopy.sort()
+            setTitle(sortCopy)
+          }}
+        >
+          Sort
+        </button>
         <h4>
           {title[0]}{' '}
           <span
@@ -24,6 +33,15 @@ function App() {
           </span>
           {like}
         </h4>
+        <button
+          onClick={() => {
+            let copy = [...title]
+            copy[0] = 'Content Title A changed'
+            setTitle(copy)
+          }}
+        >
+          Change
+        </button>
         <p>2022.07.27</p>
       </div>
       <div className="list">
