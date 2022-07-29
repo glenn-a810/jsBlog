@@ -52,6 +52,18 @@ function App() {
         <h4>{title[2]}</h4>
         <p>2022.07.27</p>
       </div>
+
+      <Modal />
+    </div>
+  )
+}
+
+const Modal = () => {
+  return (
+    <div className="modal">
+      <h4>Modal Title</h4>
+      <p>Modal Date</p>
+      <p>Modal Contents</p>
     </div>
   )
 }
