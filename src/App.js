@@ -3,9 +3,10 @@ import './App.css'
 import { useState } from 'react'
 
 function App() {
-  let post = 'Head Title A'
+  // let post = 'Head Title A'
   let [title, setTitle] = useState(['C Content Title', 'A Content Title', 'B Content Title'])
   let [like, setLike] = useState(0)
+  const [modal, setModal] = useState(false)
 
   return (
     <div className="App">
@@ -49,11 +50,17 @@ function App() {
         <p>2022.07.27</p>
       </div>
       <div className="list">
-        <h4>{title[2]}</h4>
+        <h4
+          onClick={() => {
+            modal === true ? setModal(false) : setModal(true)
+          }}
+        >
+          {title[2]}
+        </h4>
         <p>2022.07.27</p>
       </div>
 
-      <Modal />
+      {modal === true ? <Modal /> : null}
     </div>
   )
 }
