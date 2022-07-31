@@ -5,7 +5,7 @@ import { useState } from 'react'
 function App() {
   // let post = 'Head Title A'
   let [title, setTitle] = useState(['C Content Title', 'A Content Title', 'B Content Title'])
-  let [like, setLike] = useState(0)
+  let [like, setLike] = useState([0, 0, 0])
   const [modal, setModal] = useState(false)
 
   return (
@@ -27,12 +27,15 @@ function App() {
           {title[0]}{' '}
           <span
             onClick={() => {
-              setLike(like++)
+              // setLike(like++)
+              let likeCopy = [...like]
+              likeCopy[0] += 1
+              setLike(likeCopy)
             }}
           >
             👍
           </span>
-          {like}
+          {like[0]}
         </h4>
         <button
           onClick={() => {
@@ -46,7 +49,20 @@ function App() {
         <p>2022.07.27</p>
       </div>
       <div className="list">
-        <h4>{title[1]}</h4>
+        <h4>
+          {title[1]}{' '}
+          <span
+            onClick={() => {
+              // setLike(like++)
+              let likeCopy = [...like]
+              likeCopy[1] += 1
+              setLike(likeCopy)
+            }}
+          >
+            👍
+          </span>
+          {like[1]}
+        </h4>
         <p>2022.07.27</p>
       </div>
       <div className="list">
@@ -55,7 +71,18 @@ function App() {
             modal === true ? setModal(false) : setModal(true)
           }}
         >
-          {title[2]}
+          {title[2]}{' '}
+          <span
+            onClick={() => {
+              // setLike(like++)
+              let likeCopy = [...like]
+              likeCopy[2] += 1
+              setLike(likeCopy)
+            }}
+          >
+            👍
+          </span>
+          {like[2]}
         </h4>
         <p>2022.07.27</p>
       </div>
