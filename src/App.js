@@ -4,9 +4,10 @@ import { useState } from 'react'
 
 function App() {
   // let post = 'Head Title A'
-  let [title, setTitle] = useState(['C Content Title', 'A Content Title', 'B Content Title'])
-  let [like, setLike] = useState([0, 0, 0])
+  const [title, setTitle] = useState(['C Content Title', 'A Content Title', 'B Content Title'])
+  const [like, setLike] = useState([0, 0, 0])
   const [modal, setModal] = useState(false)
+  const [titleId, setTitleId] = useState(0)
 
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
           <div className="list" key={i}>
             <h4
               onClick={() => {
+                setTitleId(i)
                 modal === false ? setModal(true) : setModal(false)
               }}
             >
@@ -39,7 +41,7 @@ function App() {
         )
       })}
 
-      {modal === true ? <Modal color={'skyblue'} title={title} /> : null}
+      {modal === true ? <Modal color={'skyblue'} title={title} titleId={titleId} /> : null}
     </div>
   )
 }
@@ -47,10 +49,10 @@ function App() {
 const Modal = (props) => {
   return (
     <div className="modal" style={{ background: props.color }}>
-      <h4>{props.title}</h4>
+      <h4>{props.title[props.titleId]}</h4>
       <p>Modal Date</p>
       <p>Modal Contents</p>
-      <button>Edit</button>
+      <button>EDIT</button>
     </div>
   )
 }
