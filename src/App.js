@@ -8,6 +8,7 @@ function App() {
   const [like, setLike] = useState([0, 0, 0])
   const [modal, setModal] = useState(false)
   const [titleId, setTitleId] = useState(0)
+  const [inputTitle, setInputTitle] = useState('')
 
   return (
     <div className="App">
@@ -26,7 +27,8 @@ function App() {
             >
               {title[i]}
               <span
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation()
                   let likeCopy = [...like]
                   likeCopy[i] += 1
                   setLike(likeCopy)
@@ -37,9 +39,38 @@ function App() {
               </span>
             </h4>
             <p>2022.07.31</p>
+            <p>
+              <button
+                onClick={() => {
+                  console.log(i)
+                  const copyDelTitle = [...title]
+                  copyDelTitle.splice(i, 1)
+                  setTitle(copyDelTitle)
+                  console.log(copyDelTitle)
+                }}
+              >
+                Delete
+              </button>
+            </p>
           </div>
         )
       })}
+
+      <input
+        onChange={(e) => {
+          setInputTitle(e.target.value)
+        }}
+      />
+      <button
+        onClick={() => {
+          const copyTitle = [...title]
+          let addTitle = copyTitle.concat(inputTitle)
+          setTitle(addTitle)
+          // console.log(addTitle)
+        }}
+      >
+        ADD
+      </button>
 
       {modal === true ? <Modal color={'skyblue'} title={title} titleId={titleId} /> : null}
     </div>
